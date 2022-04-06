@@ -65,12 +65,12 @@ def main():
 
     if(len(sys.argv) != 3):
         print("Error en los argumentos, debe ejecutarse el programa como: python tp1.py arg1 arg2")
-        print("donde arg1 es el nombre del archivo con los contratos y arg2 es el largo de la ruta en km")
-        print("Ej: python tp1.py contratos.txt 400")
+        print("donde arg1 es el largo de la ruta en km y arg2 es el nombre del archivo con los contratos")
+        print("Ej: python tp1.py 400 contratos.txt")
         return 1
 
     listaContratos = []
-    archivo = open(sys.argv[1])
+    archivo = open(sys.argv[2])
     contenido = archivo.readlines()
     for line in contenido:
         linea = line.split(',')
@@ -79,7 +79,7 @@ def main():
         listaContratos.append(contrato)
     archivo.close()
 
-    solucion = encontrarMejoresContratos(listaContratos, int(sys.argv[2]))
+    solucion = encontrarMejoresContratos(listaContratos, int(sys.argv[1]))
 
     if solucion == None:
         print("No es posible hallar una solución con los contratos asignados para el largo de ruta dado.")
